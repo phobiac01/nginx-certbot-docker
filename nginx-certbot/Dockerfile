@@ -8,4 +8,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 RUN { crontab -l; echo "0       0       1       *       *       /usr/bin/certbot renew --quiet"; } | crontab -
 
+# docker build -t nginx-certbot:1.2 -t nginx-certbot:latest .
+# docker volume create letsencrypt
 # docker run -v letsencrypt:/etc/letsencrypt -v $(pwd)/nginx-confs:/etc/nginx/sites-available -v $(pwd)/sites:/var/www/  --name Nginx-Certbot -ti -p 80:80 -p 443:443 nginx-certbot sh
